@@ -10,3 +10,4 @@ A trivial math library in python. I've embarked on this project in order to lear
 ## Helpful links
 * [Tutorial on Managing a Python Project](https://github.com/yngvem/python-project-structure/)
 * [Packaging a Python Library](https://blog.ionelmc.ro/2014/05/25/python-packaging/)
+* [Official Documentation of Python Data (or object) Model](https://docs.python.org/3/reference/datamodel.html)
