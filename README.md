@@ -8,4 +8,5 @@ A trivial math library in python. I've embarked on this project in order to lear
 
 
 ## Helpful links
-* [Tutorial on managing a python](https://github.com/yngvem/python-project-structure/)
+* [Tutorial on Managing a Python Project](https://github.com/yngvem/python-project-structure/)
+* [Packaging a Python Library](https://blog.ionelmc.ro/2014/05/25/python-packaging/)
