@@ -2,9 +2,9 @@
 
 ## About
 A trivial math library in python. I've embarked on this project in order to learn about stuff in python. Stuffs like:
-<li> the python object model
+<li> The Python Object Model: Python's abstractions of objects.
 <li> how to package a python project in a github repo
-<li> python's suite of Sequence abstract base classes (the ABC library)
+<li> python's suite of Sequence abstract base classes (the ABC library). Python's extensible collection.ABC module for building powerful data structures.
 
 
 ## Helpful links
