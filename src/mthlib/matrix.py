@@ -17,12 +17,19 @@ class Matrix(object):
             for i in range(columns):
                 row.append(0) 
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, idx, value):
         if isinstance(value, list):
-            self.matrix[key] = value
+            self.matrix[idx] = value
         else:
             raise TypeError("A matrix object can only contain lists of numbers")
         return
+
+    def __getitem__(self, idx: int):
+        if isinstance(idx, int):
+            return self._rows[idx]
+        else:
+            raise TypeError("Matrix index must be an integer")
+
 
     def __repr__(self):
         '''Print the matrix row after row.'''
