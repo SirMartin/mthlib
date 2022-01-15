@@ -6,11 +6,12 @@ from numbers import Number
 
 class Matrix(object):
     
-    def __init__(self, rows: int, columns: int, fill_value: Number = 0):
+    def __init__(self, rows_len: int, columns_len: int, fill_value: Number = 0):
         
+        #error-check for size of matrix. Size must be integers
         if isinstance(rows, int) and isinstance(columns, int):
-            self._rows = rows
-            self._columns = columns
+            self._rows = rows_len
+            self._columns = columns_len
         else:
             raise TypeError("Matrix row and column length must be integers!")
 
