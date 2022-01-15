@@ -90,5 +90,5 @@ if __name__ == "__main__":
     mat[2][2] = 34
     mat[0][0] = 20
     mat[0][1] = 10
-    # print(mat.makeId(3))
+
     print(mat)
