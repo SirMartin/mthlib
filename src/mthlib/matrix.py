@@ -7,12 +7,18 @@ from numbers import Number
 class Matrix(object):
     
     def __init__(self, rows: int, columns: int, fill_value: Number = 0):
-        self._rows = rows
-        self._columns = columns
+        
         if isinstance(rows, int) and isinstance(columns, int):
+            self._rows = rows
+            self._columns = columns
+        else:
+            raise TypeError("Matrix row and column length must be integers!")
+
+        if isinstance(fill_value, Number):
             self._matrix = [[fill_value] * columns for _ in range(rows)]
         else:
-            raise TypeError("Matrix size must be integers!")
+            raise TypeError("Matrix elements must be of numeric type!")
+       
 
     def __setitem__(self, idx: int, value: list):
         if isinstance(value, list):
@@ -62,10 +68,10 @@ class Matrix(object):
 
 
     # @classmethod
-    # def makeId(cls, m):
+    # def identity(cls, m):
     #     """ Make identity matrix of rank (mxm) """
 
-    #     rows = [[0]*m for x in range(m)]
+    #     cls._matrix = [[0]*m for x in range(m)]
     #     idx = 0
         
     #     for row in rows:
@@ -77,9 +83,11 @@ class Matrix(object):
 
 if __name__ == "__main__":
         
-    mat = Matrix(3, 3.5)
-    print(mat)
+    mat = Matrix(3, 3)
+    # print(mat)
     print(mat[2][2])
     mat[2][2] = 34
+    mat[0][0] = 20
+    mat[0][1] = 10
     # print(mat.makeId(3))
     print(mat)
