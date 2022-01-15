@@ -1,23 +1,20 @@
-#from array import array
-
-
+# from array import array
+#TODO: class is not generic. only works with int. Make class work with all numerical types
+#TODO: add type annotations to every bit of this code
+from numbers import Number
 
 
 class Matrix(object):
     
-    def __init__(self, rows: int, columns: int, fill_value: int = 0):
+    def __init__(self, rows: int, columns: int, fill_value: Number = 0):
         self._rows = rows
         self._columns = columns
-        self._matrix = [[fill_value] * columns for _ in range(rows)]
+        if isinstance(rows, int) and isinstance(columns, int):
+            self._matrix = [[fill_value] * columns for _ in range(rows)]
+        else:
+            raise TypeError("Matrix size must be integers!")
 
-        # for i in range(rows):
-        #     self._matrix.append([]) 
-
-        # for row in self._matrix:
-        #     for i in range(columns):
-        #         row.append(0) 
-
-    def __setitem__(self, idx, value):
+    def __setitem__(self, idx: int, value: list):
         if isinstance(value, list):
             self._matrix[idx] = value
         else:
@@ -39,7 +36,7 @@ class Matrix(object):
             prt += "\n"
         return prt.rstrip()
 
-    def __contains__(self, value):
+    def __contains__(self, value: int):
         if isinstance(value, int):
             for row in self._matrix:
                 for element in row:
@@ -50,6 +47,19 @@ class Matrix(object):
             return False
         else:
             raise TypeError("checking value must be numerical")
+
+    def __add__(self, other: "Matrix") -> "Matrix":
+        raise NotImplementedError
+
+    def __mul__(self, other: "Matrix") -> "Matrix":
+        raise NotImplementedError
+
+    def __sub__(self, other: "Matrix") -> "Matrix":
+        raise NotImplementedError
+
+    def __div__(self, other: "Matrix") -> "Matrix":
+        raise NotImplementedError
+
 
     # @classmethod
     # def makeId(cls, m):
@@ -65,10 +75,11 @@ class Matrix(object):
     #     return cls.fromList(rows)
 
 
-
-mat = Matrix(3, 3, 0)
-print(mat)
-print(mat[2][2])
-mat[2][2] = 34
-# print(mat.makeId(3))
-print(mat)
+if __name__ == "__main__":
+        
+    mat = Matrix(3, 3.5)
+    print(mat)
+    print(mat[2][2])
+    mat[2][2] = 34
+    # print(mat.makeId(3))
+    print(mat)
