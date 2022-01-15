@@ -68,29 +68,19 @@ class Matrix(object):
     def __div__(self, other: "Matrix") -> "Matrix":
         raise NotImplementedError
 
+    @classmethod
+    def identity(cls, n: int):
+        """ 
+        Creates a n x n identity matrix.
+        """
+        newMatrix = Matrix(n, n)
 
-    # def identity(n):
-    #     """
-    #     Creates a n x n identity matrix.
-    #     """
-    #     I = zeroes(n, n)
-    #     for i in range(n):
-    #         I.g[i][i] = 1.0
-    #     return I
+        i = 0
+        for row in newMatrix:
+            row[i] = 1
+            i += 1
 
-    # @classmethod
-    # def identity(cls, m):
-    #     """ Make identity matrix of rank (mxm) """
-
-    #     cls._matrix = [[0]*m for x in range(m)]
-    #     idx = 0
-        
-    #     for row in rows:
-    #         row[idx] = 1
-    #         idx += 1
-
-    #     return cls.fromList(rows)
-
+        return newMatrix
 
 
     @classmethod
@@ -107,12 +97,24 @@ class Matrix(object):
 if __name__ == "__main__":
         
     mat = Matrix(3, 3)
-    # print(mat)
-    print(mat[2][2])
+    print(mat)
+
+    print()
     mat[2][2] = 34
     mat[0][0] = 20
     mat[0][1] = 10
 
     print(mat)
+    print()
+
     mat1 = Matrix.randomMat(3, 3, 100, 200)
     print(mat1)
+    print()
+
+    mat2 = Matrix.identity(2)
+    print(mat2)
+    print()
+
+    mat3 = Matrix.identity(3)
+    print(mat3)
+    print()
