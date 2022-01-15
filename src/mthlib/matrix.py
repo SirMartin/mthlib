@@ -94,8 +94,9 @@ class Matrix(object):
 
 
     @classmethod
-    def randomMat(cls,row_size, column_size, lower=-5, upper=5):
-        '''Fill the matrix with random numbers (integers).'''
+    def randomMat(cls,row_size, column_size, lower=0, upper=10):
+        '''matrix with random elements of the same numerical type'''
+        # if isinstance(row_size, int) and isinstance(column_size, int):
         newMatrix = Matrix(row_size, column_size)    
         for row in newMatrix:
             for i in range(newMatrix._columns):
