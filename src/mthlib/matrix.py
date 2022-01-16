@@ -50,7 +50,7 @@ class Matrix(object):
     """
     
     def __init__(self, rows: int, columns: int, fill_value: Number = 0):
-        
+        "n and m are of int type representing the row length and column length respectively."
         #error-check for size of matrix. Size must be integers
         if isinstance(rows, int) and isinstance(columns, int):
             self._rows = rows
