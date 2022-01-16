@@ -6,6 +6,48 @@ from random import randrange, randint, random
 
 
 class Matrix(object):
+    """
+    A class representation of matrix data structure. 
+    Common operations of a matrix object are demonstrated below.
+    
+    >>> mat = Matrix(3, 3)
+    >>> print(mat)
+    [0, 0, 0]
+    [0, 0, 0]
+    [0, 0, 0]   
+    
+    mat[2][2] = 34
+    mat[0][0] = 20
+    mat[0][1] = 10
+
+    >>> print(mat)
+    [20, 10, 0]
+    [0, 0, 0]
+    [0, 0, 34]
+
+    >>> mat1 = Matrix.randomMat(3, 3, 100, 200)
+    >>> print(mat1)
+    [168, 169, 105]
+    [152, 100, 162]
+    [139, 116, 185]
+
+    >>> mat2 = Matrix.identity(2)
+    >>> print(mat2)
+    [1, 0]
+    [0, 1]
+    
+
+    >>> mat3 = Matrix.identity(7)
+    >>> print(mat3)
+    [1, 0, 0, 0, 0, 0, 0]
+    [0, 1, 0, 0, 0, 0, 0]
+    [0, 0, 1, 0, 0, 0, 0]
+    [0, 0, 0, 1, 0, 0, 0]
+    [0, 0, 0, 0, 1, 0, 0]
+    [0, 0, 0, 0, 0, 1, 0]
+    [0, 0, 0, 0, 0, 0, 1]
+        
+    """
     
     def __init__(self, rows: int, columns: int, fill_value: Number = 0):
         
@@ -57,16 +99,24 @@ class Matrix(object):
             raise TypeError("checking value must be numerical")
 
     def __add__(self, other: "Matrix") -> "Matrix":
+        "Matrix addtion"
         raise NotImplementedError
 
     def __mul__(self, other: "Matrix") -> "Matrix":
+        "Matrix multiplication"
         raise NotImplementedError
 
     def __sub__(self, other: "Matrix") -> "Matrix":
+        "Matrix subtraction"
         raise NotImplementedError
 
     def __div__(self, other: "Matrix") -> "Matrix":
+        "Matrix division"
         raise NotImplementedError
+
+    def __neg__(self) -> "Matrix":
+        "Negative matrix"
+        return self * -1
 
     @classmethod
     def identity(cls, n: int):
@@ -84,7 +134,7 @@ class Matrix(object):
 
 
     @classmethod
-    def randomMat(cls,row_size, column_size, lower=0, upper=10):
+    def randomMat(cls,row_size: int, column_size: int, lower: Number = 0, upper: Number = 10):
         '''matrix with random elements of the same numerical type'''
         # if isinstance(row_size, int) and isinstance(column_size, int):
         newMatrix = Matrix(row_size, column_size)    
@@ -115,6 +165,6 @@ if __name__ == "__main__":
     print(mat2)
     print()
 
-    mat3 = Matrix.identity(3)
+    mat3 = Matrix.identity(7)
     print(mat3)
     print()
