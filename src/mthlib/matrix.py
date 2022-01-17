@@ -114,8 +114,15 @@ class Matrix(object):
         "Matrix division"
         raise NotImplementedError
 
-    def __neg__(self) -> "Matrix":
-        "Negative matrix"
+    def __eq__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError("A Matrix can only be compared with another Matrix")
+        return self._matrix == other._matrix
+
+    def __ne__(self, other):
+        return not self == other
+
+    def __neg__(self):
         return self * -1
 
     @classmethod
