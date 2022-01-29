@@ -1,6 +1,7 @@
 # from array import array
 #TODO: class is not generic. only works with int. Make class work with all numerical types
 #TODO: add type annotations to every bit of this code
+#TODO: Use custom error to generate intuituve error messages
 from numbers import Number
 from random import randrange, randint, random
 
@@ -64,17 +65,18 @@ class Matrix(object):
     
             
     def __setitem__(self, idx: int, value: list):
-        if isinstance(value, list) and isinstance(idx, int):
-            self._matrix[idx] = value
-        else:
+
+        if not isinstance(value, list) and not isinstance(idx, int):
             raise TypeError("A matrix object can only contain lists of numbers")
+
+        self._matrix[idx] = value
         return
 
     def __getitem__(self, idx: int):
-        if isinstance(idx, int):
-            return self._matrix[idx]
-        else:
+
+        if not isinstance(idx, int):
             raise TypeError("Matrix index must be an integer")
+        return self._matrix[idx]
 
 
     def __repr__(self):
@@ -85,17 +87,17 @@ class Matrix(object):
             prt += "\n"
         return prt.rstrip()
 
-    def __contains__(self, value: int):
-        if isinstance(value, int):
-            for row in self._matrix:
-                for element in row:
-                    if element == value:
-                        return True
-                    else:
-                        pass
-            return False
-        else:
+    def __contains__(self, value: Number):
+        if not isinstance(value, int):
             raise TypeError("checking value must be numerical")
+        for row in self._matrix:
+            for element in row:
+                if element == value:
+                    return True
+
+            return False
+        
+            
 
     def __add__(self, other: "Matrix") -> "Matrix":
         "Matrix addtion"
@@ -129,6 +131,8 @@ class Matrix(object):
         """ 
         Creates a n x n identity matrix.
         """
+        if not isinstance(n, int):
+            raise TypeError("Identity matrix must be of int size")
         newMatrix = Matrix(n, n)
 
         i = 0
