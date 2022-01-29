@@ -52,18 +52,17 @@ class Matrix(object):
     def __init__(self, rows: int, columns: int, fill_value: Number = 0):
         "n and m are of int type representing the row length and column length respectively."
         #error-check for size of matrix. Size must be integers
-        if isinstance(rows, int) and isinstance(columns, int):
-            self._rows = rows
-            self._columns = columns
-        else:
+        if not isinstance(rows, int) and not isinstance(columns, int):
             raise TypeError("Matrix row and column length must be integers!")
-
-        if isinstance(fill_value, Number):
-            self._matrix = [[fill_value] * self._columns for _ in range(self._rows)]
-        else:
+            
+        self._rows = rows
+        self._columns = columns
+            
+        if not isinstance(fill_value, Number):
             raise TypeError("Matrix elements must be of numeric type!")
-       
-
+        self._matrix = [[fill_value] * self._columns for _ in range(self._rows)]
+    
+            
     def __setitem__(self, idx: int, value: list):
         if isinstance(value, list) and isinstance(idx, int):
             self._matrix[idx] = value
